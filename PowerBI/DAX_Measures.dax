@@ -1,0 +1,108 @@
+/*
+================================================================================
+IPL SPORTS PERFORMANCE ANALYTICS - DAX MEASURES CATALOG
+Project: Sports Performance Analytics Using IPL Data
+Domain: Data Analytics & Business Intelligence
+================================================================================
+*/
+
+// --- 1. OVERALL IPL METRICS ---
+Total Matches = DISTINCTCOUNT(Dim_Matches[match_id])
+
+Total Runs = SUM(Fact_Season_Summary[total_runs])
+
+Total Wickets = SUM(Fact_Bowling[wickets])
+
+Total Seasons = DISTINCTCOUNT(Fact_Season_Summary[season])
+
+Average Runs Per Match = 
+DIVIDE(
+    [Total Runs],
+    [Total Matches],
+    0
+)
+
+// --- 2. BATTING MEASURES ---
+Total Batting Runs = SUM(Fact_Batting[runs])
+
+Total Sixes = SUM(Fact_Batting[sixes])
+
+Total Fours = SUM(Fact_Batting[fours])
+
+Batting Average = 
+DIVIDE(
+    SUM(Fact_Batting[runs]),
+    SUM(Fact_Batting[dismissals]),
+    SUM(Fact_Batting[runs])
+)
+
+Batting Strike Rate = 
+DIVIDE(
+    SUM(Fact_Batting[runs]) * 100,
+    SUM(Fact_Batting[balls_faced]),
+    0
+)
+
+Boundary Contribution % = 
+DIVIDE(
+    SUM(Fact_Batting[boundary_runs]) * 100,
+    SUM(Fact_Batting[runs]),
+    0
+)
+
+// --- 3. BOWLING MEASURES ---
+Bowler Wickets = SUM(Fact_Bowling[wickets])
+
+Bowling Economy = 
+DIVIDE(
+    SUM(Fact_Bowling[runs_conceded]) * 6,
+    SUM(Fact_Bowling[legal_balls]),
+    0
+)
+
+Bowling Strike Rate = 
+DIVIDE(
+    SUM(Fact_Bowling[legal_balls]),
+    SUM(Fact_Bowling[wickets]),
+    0
+)
+
+Bowling Average = 
+DIVIDE(
+    SUM(Fact_Bowling[runs_conceded]),
+    SUM(Fact_Bowling[wickets]),
+    0
+)
+
+Dot Ball % = 
+DIVIDE(
+    SUM(Fact_Bowling[dot_balls]) * 100,
+    SUM(Fact_Bowling[legal_balls]),
+    0
+)
+
+// --- 4. TEAM & TACTICAL MEASURES ---
+Team Matches Played = SUM(Fact_Team_Performance[matches_played])
+
+Team Matches Won = SUM(Fact_Team_Performance[matches_won])
+
+Team Win % = 
+DIVIDE(
+    SUM(Fact_Team_Performance[matches_won]) * 100,
+    SUM(Fact_Team_Performance[matches_played]),
+    0
+)
+
+Chasing Win % = 
+DIVIDE(
+    SUM(Fact_Team_Performance[chasing_won]) * 100,
+    SUM(Fact_Team_Performance[chasing_played]),
+    0
+)
+
+Batting First Win % = 
+DIVIDE(
+    SUM(Fact_Team_Performance[bat_first_won]) * 100,
+    SUM(Fact_Team_Performance[bat_first_played]),
+    0
+)
