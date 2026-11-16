@@ -12,7 +12,9 @@ An end-to-end Data Science and Business Intelligence project analyzing 19 editio
 
 ## 📌 Project Overview
 * **Domain:** Sports Analytics & Business Intelligence
-* **Dataset:** Official Cricsheet IPL CSV2 Archive (1,243 matches, 295,708 deliveries, 808 players, 19 seasons)
+* **Dataset:** Official Cricsheet IPL CSV2 Archive (1,243 matches, 295,708 deliveries, 808 players, 19 seasons), Dataset Link: "Cricsheet Official Downloads – IPL CSV2" (https://cricsheet.org/downloads/)
+Archive Used: "ipl_csv2.zip"
+The dataset contains individual match CSV files, match information files and a consolidated "all_matches.csv" file.
 * **Tools & Stack:**
   * **Data Processing & Analysis:** Python, Pandas, NumPy
   * **Exploratory Data Visualization:** Matplotlib, Seaborn
